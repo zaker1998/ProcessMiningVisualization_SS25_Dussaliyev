@@ -21,8 +21,8 @@ class FuzzyGraphView(QWidget, AlgorithmViewInterface):
         self.default_edge_cutoff = 0.0
         self.edge_cutoff = self.default_edge_cutoff
 
-        self.default_utility_ration = 0.0
-        self.utility_ratio = self.default_utility_ration
+        self.default_utility_ratio = 0.0
+        self.utility_ratio = self.default_utility_ratio
 
         self.max_significance = 100
         self.min_significance = 0
@@ -39,7 +39,13 @@ class FuzzyGraphView(QWidget, AlgorithmViewInterface):
         self.saveFolder = saveFolder
         # directory where graphviz file is stored for display and export
         self.workingDirectory = workingDirectory
-        self.FuzzyGraphController = FuzzyGraphController(workingDirectory, self.significance, self.edge_cutoff,self.utility_ratio)
+        self.FuzzyGraphController = FuzzyGraphController(
+            workingDirectory,
+            self.significance,
+            self.correlation,
+            self.edge_cutoff,
+            self.utility_ratio,
+        )
 
         self.graphviz_graph = None
         self.graph_widget = HTMLWidget(parent)
@@ -244,5 +250,5 @@ class FuzzyGraphView(QWidget, AlgorithmViewInterface):
         #self.default_significance = 0.7
         #self.default_correlation = 0.5
         #self.default_edge_cutoff = 0.5
-        #self.default_utility_ration = 0.5
+        #self.default_utility_ratio = 0.5
         self.zoom_factor = 1.0
